@@ -29,7 +29,7 @@ impl Default for Options {
             allow_option_vec: false,
             type_visibility: "pub".into(),
             field_visibility: Some("pub".into()),
-            derives: "Default, Debug, Clone, PartialEq, serde_derive::Serialize, serde_derive::Deserialize".into(),
+            derives: "Default, Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize".into(),
             property_name_format: None,
             hints: Vec::new(),
             unwrap: "".into(),
