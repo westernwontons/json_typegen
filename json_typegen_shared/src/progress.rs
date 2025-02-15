@@ -1,7 +1,8 @@
-use indicatif::{ProgressBar, ProgressStyle};
 use std::fs::File;
 use std::io::{IoSliceMut, Read};
 use std::path::Path;
+
+use indicatif::{ProgressBar, ProgressStyle};
 
 pub(crate) struct FileWithProgress {
     file: File,

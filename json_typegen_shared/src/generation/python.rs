@@ -1,5 +1,6 @@
-use linked_hash_map::LinkedHashMap;
 use std::collections::HashSet;
+
+use linked_hash_map::LinkedHashMap;
 
 use crate::options::{ImportStyle, Options, StringTransform};
 use crate::shape::{self, Shape};
@@ -23,12 +24,15 @@ impl Import {
             Import::Field => ("pydantic", "Field"),
         }
     }
+
     fn module(&self) -> &'static str {
         self.pair().0
     }
+
     fn identifier(&self) -> &'static str {
         self.pair().1
     }
+
     fn qualified(&self) -> String {
         let (module, identifier) = self.pair();
         format!("{}.{}", module, identifier)
@@ -83,7 +87,7 @@ pub fn python_types(name: &str, shape: &Shape, options: Options) -> Code {
                 }
             }
         }
-        if !import_code.is_empty(){
+        if !import_code.is_empty() {
             import_code += "\n\n";
             code = import_code + &code;
         }
@@ -256,7 +260,11 @@ fn generate_data_class(
             let mut field_code = String::new();
             let transformed = apply_transform(ctxt, &field_name, name);
             if transformed != field_name {
-                field_code += &format!(" = {}(alias=\"{}\")", import(ctxt, Import::Field), transformed)
+                field_code += &format!(
+                    " = {}(alias=\"{}\")",
+                    import(ctxt, Import::Field),
+                    transformed
+                )
             }
 
             format!("    {}: {}{}", field_name, field_type, field_code)

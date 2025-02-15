@@ -1,11 +1,12 @@
-use linked_hash_map::LinkedHashMap;
 use std::collections::HashSet;
 
+use linked_hash_map::LinkedHashMap;
+
+use crate::OutputMode;
 use crate::options::{ImportStyle, Options, StringTransform};
 use crate::shape::{self, Shape};
 use crate::to_singular::to_singular;
 use crate::util::{kebab_case, lower_camel_case, snake_case, type_case};
-use crate::OutputMode;
 
 struct Ctxt {
     options: Options,
@@ -188,8 +189,9 @@ fn generate_data_class(
     containing_shape: &Shape,
 ) -> (Ident, Option<Code>) {
     if field_shapes.is_empty() {
-        // Kotlin does not allow empty data classes, so use type for general unknown object
-        // Once #30 is implemented: && !options.collect_unknown_properties
+        // Kotlin does not allow empty data classes, so use type for general unknown
+        // object Once #30 is implemented: &&
+        // !options.collect_unknown_properties
         return ("Map<String, Any>".into(), None);
     }
 

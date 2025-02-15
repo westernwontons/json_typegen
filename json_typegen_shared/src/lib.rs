@@ -1,14 +1,15 @@
 //! [json_typegen](https://typegen.vestera.as/) as just a library,
 //! for use in build scripts and other crates.
-//! If you want an actual interface, like a website, CLI or procedural macro, check the repo:
-//! [github.com/evestera/json_typegen](https://github.com/evestera/json_typegen)
+//! If you want an actual interface, like a website, CLI or procedural macro,
+//! check the repo: [github.com/evestera/json_typegen](https://github.com/evestera/json_typegen)
 //!
-//! Note: This crate is to a certain extent considered internal API of the `json_typegen` tools.
-//! If you want to use this crate directly, be prepared for breaking changes to happen, and consider
-//! [opening an issue](https://github.com/evestera/json_typegen/issues/new)
+//! Note: This crate is to a certain extent considered internal API of the
+//! `json_typegen` tools. If you want to use this crate directly, be prepared
+//! for breaking changes to happen, and consider [opening an issue](https://github.com/evestera/json_typegen/issues/new)
 //! to let me know what you are using. (Breaking changes may still happen,
 //! but then I'll at least try to keep your use-case in mind if possible.
-//! This has happened enough by now that there are parts I already consider public API.)
+//! This has happened enough by now that there are parts I already consider
+//! public API.)
 
 use thiserror::Error;
 
@@ -48,7 +49,8 @@ pub enum JTError {
     MacroParsingError(String),
 }
 
-/// Utilities exposed only to be available inside the `json_typegen` workspace. Internal API.
+/// Utilities exposed only to be available inside the `json_typegen` workspace.
+/// Internal API.
 pub mod internal_util {
     pub fn display_error_with_causes(error: &dyn std::error::Error) -> String {
         let mut message = format!("{}", error);

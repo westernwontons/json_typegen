@@ -4,7 +4,7 @@
 
 use syn;
 use syn::parse::{boolean, ident, string};
-use synom::{alt, call, named, punct, IResult};
+use synom::{IResult, alt, call, named, punct};
 
 use crate::hints::Hint;
 use crate::options::{ImportStyle, Options, OutputMode, StringTransform};
@@ -58,8 +58,8 @@ pub fn full_macro(input: &str) -> Result<MacroInput, String> {
     macro_input(input)
 }
 
-/// Parses the arguments to a `json_typegen` macro invocation. E.g. something like
-/// `"Foo", "http://example.com/sample.json", { deny_unknown_fields }`
+/// Parses the arguments to a `json_typegen` macro invocation. E.g. something
+/// like `"Foo", "http://example.com/sample.json", { deny_unknown_fields }`
 pub fn macro_input(input: &str) -> Result<MacroInput, String> {
     let (input, name) = match string(input) {
         IResult::Done(input, lit) => (input, lit.value),
@@ -101,8 +101,8 @@ pub fn macro_input(input: &str) -> Result<MacroInput, String> {
     })
 }
 
-/// Parses the options block of a `json_typegen` macro invocation. E.g. something like:
-/// `{ deny_unknown_fields }`
+/// Parses the options block of a `json_typegen` macro invocation. E.g.
+/// something like: `{ deny_unknown_fields }`
 pub fn options(input: &str) -> Result<Options, String> {
     options_with_defaults(input, Options::default())
 }

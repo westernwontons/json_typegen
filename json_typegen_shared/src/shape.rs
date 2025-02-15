@@ -2,9 +2,10 @@ use linked_hash_map::LinkedHashMap;
 
 /// The type representing the inferred structure
 ///
-/// A word of caution: Everything in this crate is "internal API", but for this type in particular,
-/// since it is very central to how json_typegen works,
-/// be prepared that major breaking changes may need to be made to this in the future.
+/// A word of caution: Everything in this crate is "internal API", but for this
+/// type in particular, since it is very central to how json_typegen works,
+/// be prepared that major breaking changes may need to be made to this in the
+/// future.
 #[non_exhaustive]
 #[derive(Debug, PartialEq, Clone)]
 pub enum Shape {
@@ -18,7 +19,8 @@ pub enum Shape {
     /// `Optional(T)` represents that a value is nullable, or not always present
     Optional(Box<Shape>),
 
-    /// Equivalent to `Optional(Bottom)`, `Null` represents optionality with no further information
+    /// Equivalent to `Optional(Bottom)`, `Null` represents optionality with no
+    /// further information
     Null,
 
     Bool,
@@ -139,16 +141,17 @@ impl Shape {
                         .zip(b.iter())
                         .all(|(e1, e2)| e1.is_acceptable_substitution_for(e2))
             }
-            (Struct { fields: f1 }, Struct { fields: f2}) => {
+            (Struct { fields: f1 }, Struct { fields: f2 }) => {
                 // Require all fields to be the same (but ignore order)
                 // Could maybe be more lenient, e.g. for missing optional fields
-                f1.len() == f2.len() && f1.iter().all(|(key, shape1)| {
-                    if let Some(shape2) = f2.get(key) {
-                        shape1.is_acceptable_substitution_for(shape2)
-                    } else {
-                        false
-                    }
-                })
+                f1.len() == f2.len()
+                    && f1.iter().all(|(key, shape1)| {
+                        if let Some(shape2) = f2.get(key) {
+                            shape1.is_acceptable_substitution_for(shape2)
+                        } else {
+                            false
+                        }
+                    })
             }
             _ => false,
         }

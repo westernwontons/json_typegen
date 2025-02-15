@@ -1,6 +1,7 @@
-use crate::inference::jsoninputerr::JsonInputErr;
 use std::io::{BufReader, Bytes, Read};
 use std::iter::Peekable;
+
+use crate::inference::jsoninputerr::JsonInputErr;
 
 #[derive(Debug, PartialEq)]
 pub enum JsonToken {
@@ -205,9 +206,10 @@ impl<R: Read> Iterator for JsonLexer<R> {
 
 #[cfg(test)]
 mod tests {
+    use std::fmt::Debug;
+
     use super::*;
     use crate::inference::jsoninputerr::JsonInputErr;
-    use std::fmt::Debug;
 
     #[test]
     fn empty_input() {

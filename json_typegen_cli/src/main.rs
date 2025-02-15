@@ -1,8 +1,9 @@
-use clap::{App, Arg};
-use json_typegen_shared::internal_util::display_error_with_causes;
-use json_typegen_shared::{codegen, codegen_from_macro, parse, Options, OutputMode};
 use std::fs::OpenOptions;
 use std::io::{self, Read, Write};
+
+use clap::{App, Arg};
+use json_typegen_shared::internal_util::display_error_with_causes;
+use json_typegen_shared::{Options, OutputMode, codegen, codegen_from_macro, parse};
 
 fn main_with_result() -> Result<(), Box<dyn std::error::Error>> {
     let matches = App::new("json_typegen CLI")

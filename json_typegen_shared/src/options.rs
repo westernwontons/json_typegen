@@ -29,7 +29,8 @@ impl Default for Options {
             allow_option_vec: false,
             type_visibility: "pub".into(),
             field_visibility: Some("pub".into()),
-            derives: "Default, Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize".into(),
+            derives: "Default, Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize"
+                .into(),
             property_name_format: None,
             hints: Vec::new(),
             unwrap: "".into(),
@@ -55,7 +56,8 @@ impl Options {
 pub enum ImportStyle {
     /// Add import/use statements for any external types used
     AddImports,
-    /// Assume import/use statements already exist where the generated code will be inserted
+    /// Assume import/use statements already exist where the generated code will
+    /// be inserted
     AssumeExisting,
     /// Use fully qualified paths for any external type used
     QualifiedPaths,
@@ -107,7 +109,8 @@ impl OutputMode {
 // "SCREAMING_SNAKE_CASE", "kebab-case", "SCREAMING-KEBAB-CASE"
 
 // Jackson JsonNaming PropertyNamingStrategy:
-// KebabCaseStrategy, LowerCaseStrategy, SnakeCaseStrategy, UpperCamelCaseStrategy
+// KebabCaseStrategy, LowerCaseStrategy, SnakeCaseStrategy,
+// UpperCamelCaseStrategy
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, PartialEq, Clone)]
 pub enum StringTransform {

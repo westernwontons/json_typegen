@@ -18,7 +18,8 @@ const ENDS_WITH_RULES: &[(&str, usize, &str)] = &[
 /// Singularize a word for use as a type name
 ///
 /// Implementation notes:
-/// - Prefer to be conservative; Missing singularizations are better than incorrect ones.
+/// - Prefer to be conservative; Missing singularizations are better than
+///   incorrect ones.
 /// - It's OK if this is somewhat use-case specific. It's not exposed.
 /// - No regexes, since we don't want the regex dependency in the WASM.
 pub fn to_singular(s: &str) -> String {

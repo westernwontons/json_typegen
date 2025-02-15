@@ -1,5 +1,6 @@
-use linked_hash_map::LinkedHashMap;
 use std::collections::HashSet;
+
+use linked_hash_map::LinkedHashMap;
 
 use crate::options::Options;
 use crate::shape::{self, Shape};

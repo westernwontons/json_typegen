@@ -1,11 +1,13 @@
+use std::io::Read;
+use std::iter::Peekable;
+
+use linked_hash_map::LinkedHashMap;
+
+use crate::Options;
 use crate::hints::{HintType, Hints};
 use crate::inference::jsoninputerr::JsonInputErr;
 use crate::inference::jsonlex::{JsonLexer, JsonToken};
-use crate::shape::{common_shape, Shape};
-use crate::Options;
-use linked_hash_map::LinkedHashMap;
-use std::io::Read;
-use std::iter::Peekable;
+use crate::shape::{Shape, common_shape};
 
 pub fn shape_from_json<R: Read>(
     read: R,
@@ -183,7 +185,8 @@ impl<T: Iterator<Item = Result<JsonToken, JsonInputErr>>> Inference<T> {
 
     /// "Unwrap" JSON nodes before doing inference
     ///
-    /// The node(s) specified by the pointer is the new root(s) that we do inference on
+    /// The node(s) specified by the pointer is the new root(s) that we do
+    /// inference on
     fn unwrap(
         &mut self,
         pointer_tokens: &[&str],
@@ -242,7 +245,8 @@ impl<T: Iterator<Item = Result<JsonToken, JsonInputErr>>> Inference<T> {
                     return Ok(None);
                 }
 
-                let first_token_is_numeric = first_token.bytes().all(|b| (b'0'..=b'9').contains(&b));
+                let first_token_is_numeric =
+                    first_token.bytes().all(|b| (b'0'..=b'9').contains(&b));
 
                 let mut folded = None;
 

@@ -1,5 +1,5 @@
-//! Code to convert the Rust-styled field/variant (e.g. `my_field`, `MyType`) to the
-//! case of the source (e.g. `my-field`, `MY_FIELD`).
+//! Code to convert the Rust-styled field/variant (e.g. `my_field`, `MyType`) to
+//! the case of the source (e.g. `my-field`, `MY_FIELD`).
 //!
 //! Manually vendored from serde_derive/internals
 //! <https://github.com/serde-rs/serde/blob/4eb580790dd6c96089b92942a5f481b21df4feaf/serde_derive/src/internals/case.rs>
@@ -9,12 +9,12 @@
 // See https://users.rust-lang.org/t/psa-dealing-with-warning-unused-import-std-ascii-asciiext-in-today-s-nightly/13726
 #[allow(deprecated, unused_imports)]
 use std::ascii::AsciiExt;
-
 use std::str::FromStr;
 
 use self::RenameRule::*;
 
-/// The different possible ways to change case of fields in a struct, or variants in an enum.
+/// The different possible ways to change case of fields in a struct, or
+/// variants in an enum.
 #[derive(Copy, Clone, PartialEq)]
 pub enum RenameRule {
     /// Don't apply a default rename rule.
@@ -41,7 +41,8 @@ pub enum RenameRule {
 }
 
 impl RenameRule {
-    /// Apply a renaming rule to an enum variant, returning the version expected in the source.
+    /// Apply a renaming rule to an enum variant, returning the version expected
+    /// in the source.
     pub fn apply_to_variant(&self, variant: &str) -> String {
         match *self {
             None | PascalCase => variant.to_owned(),
@@ -66,7 +67,8 @@ impl RenameRule {
         }
     }
 
-    /// Apply a renaming rule to a struct field, returning the version expected in the source.
+    /// Apply a renaming rule to a struct field, returning the version expected
+    /// in the source.
     pub fn apply_to_field(&self, field: &str) -> String {
         match *self {
             None | LowerCase | SnakeCase => field.to_owned(),
