@@ -316,7 +316,7 @@ fn generate_struct_type(
 fn to_rename_rule(transform: &StringTransform) -> RenameRule {
     match transform {
         StringTransform::LowerCase => RenameRule::LowerCase,
-        StringTransform::UpperCase => RenameRule::UPPERCASE,
+        StringTransform::UpperCase => RenameRule::UpperCase,
         StringTransform::PascalCase => RenameRule::PascalCase,
         StringTransform::CamelCase => RenameRule::CamelCase,
         StringTransform::SnakeCase => RenameRule::SnakeCase,
