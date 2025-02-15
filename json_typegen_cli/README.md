@@ -1,11 +1,9 @@
 # CLI for generation of type definitions for Rust, Kotlin, TypeScript and JSON Schema from JSON
 
-**Note**: There is also a web interface, and for Rust types there is also a
-procedural macro interface to this code, which uses
-the same underlying algorithm and code generation. See
-[the repository](https://github.com/evestera/json_typegen) for details
-and [typegen.vestera.as](https://typegen.vestera.as) for the web interface.
-
+**Note**: There is also a web interface, and for Rust types there is also a procedural macro
+interface to this code, which uses the same underlying algorithm and code generation. See
+[the repository](https://github.com/evestera/json_typegen) for details and
+[typegen.vestera.as](https://typegen.vestera.as) for the web interface.
 
 ## Installation
 
@@ -28,7 +26,7 @@ To generate the Rust type `Point` in `point.rs` from a local sample, run:
 json_typegen json_samples/point.json -o src/point.rs -n Point
 ```
 
-*Note: The output file (e.g. `src/point.rs`) will be overwritten if it exists.*
+_Note: The output file (e.g. `src/point.rs`) will be overwritten if it exists._
 
 For an online sample, run:
 
@@ -36,21 +34,20 @@ For an online sample, run:
 json_typegen 'https://typegen.vestera.as/examples/point.json' -o src/point.rs -n Point
 ```
 
-The generated code assumes the availability of `serde` and `serde_derive`, so
-make sure your `Cargo.toml` contains something like:
+The generated code assumes the availability of `serde` with the `derive` feature enabled, so make
+sure your `Cargo.toml` contains something like:
 
 ```toml
 [dependencies]
-serde = "1.0"
-serde_derive = "1.0"
+serde = { version = "1.0", features = ["derive"]}
 # Not required for the types themselves, but you probably also want:
 serde_json = "1.0"
 ```
 
 ## Options and configurations
 
-For help with the CLI itself run `json_typegen -h`. To configure visibility and
-other options see [the general configuration documentation](../CONFIGURATION.md).
+For help with the CLI itself run `json_typegen -h`. To configure visibility and other options see
+[the general configuration documentation](../CONFIGURATION.md).
 
 ## Other languages
 

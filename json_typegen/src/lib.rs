@@ -1,7 +1,7 @@
 //! This crate provides the procedural macro `json_typegen!` which creates Rust
 //! types from JSON samples. As an example, the below code generates code for
 //! the type Point, including derives for serialization and deserialization
-//! (using [serde_derive](https://crates.io/crates/serde_derive)).
+//! (using [serde](https://crates.io/crates/serde_derive) with the "derive" feature enabled).
 //!
 //! ```rust
 //! use json_typegen::json_typegen;
@@ -17,8 +17,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! serde = "1.0"
-//! serde_derive = "1.0"
+//! serde = { version = "1.0", features = ["derive"] }
 //! serde_json = "1.0"
 //! json_typegen = "0.7"
 //! ```
