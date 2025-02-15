@@ -12,6 +12,7 @@ use self::RenameRule::*;
 #[derive(Copy, Clone, PartialEq)]
 pub enum RenameRule {
     /// Don't apply a default rename rule.
+    #[allow(dead_code)]
     None,
     /// Rename direct children to "lowercase" style.
     LowerCase,
@@ -46,6 +47,7 @@ static RENAME_RULES: &[(&str, RenameRule)] = &[
 ];
 
 impl RenameRule {
+    #[allow(dead_code)]
     pub fn from_str(rename_all_str: &str) -> Result<Self, ParseError> {
         for (name, rule) in RENAME_RULES {
             if rename_all_str == *name {
@@ -59,6 +61,7 @@ impl RenameRule {
 
     /// Apply a renaming rule to an enum variant, returning the version expected
     /// in the source.
+    #[allow(dead_code)]
     pub fn apply_to_variant(self, variant: &str) -> String {
         match self {
             None | PascalCase => variant.to_owned(),
@@ -115,6 +118,7 @@ impl RenameRule {
     }
 
     /// Returns the `RenameRule` if it is not `None`, `rule_b` otherwise.
+    #[allow(dead_code)]
     pub fn or(self, rule_b: Self) -> Self {
         match self {
             None => rule_b,
