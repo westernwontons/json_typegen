@@ -58,7 +58,7 @@ pub fn common_shape(a: Shape, b: Shape) -> Shape {
             if shapes1.len() == shapes2.len() {
                 let shapes: Vec<_> = shapes1
                     .into_iter()
-                    .zip(shapes2.into_iter())
+                    .zip(shapes2)
                     .map(|(a, b)| common_shape(a, b))
                     .collect();
                 Tuple(shapes, n1 + n2)

@@ -144,17 +144,17 @@ pub fn is_ts_identifier(s: &str) -> bool {
     }
 
     if let Some((first, rest)) = s.as_bytes().split_first() {
-        let first_valid = (b'a'..=b'z').contains(first)
-            || (b'A'..=b'Z').contains(first)
+        let first_valid = first.is_ascii_lowercase()
+            || first.is_ascii_uppercase()
             || *first == b'_'
             || *first == b'$';
         return first_valid
             && rest.iter().all(|b| {
-                (b'a'..=b'z').contains(b)
-                    || (b'A'..=b'Z').contains(b)
+                b.is_ascii_lowercase()
+                    || b.is_ascii_uppercase()
                     || *b == b'_'
                     || *b == b'$'
-                    || (b'0'..=b'9').contains(b)
+                    || b.is_ascii_digit()
             });
     }
     false

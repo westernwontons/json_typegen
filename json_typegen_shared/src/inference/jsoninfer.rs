@@ -245,8 +245,7 @@ impl<T: Iterator<Item = Result<JsonToken, JsonInputErr>>> Inference<T> {
                     return Ok(None);
                 }
 
-                let first_token_is_numeric =
-                    first_token.bytes().all(|b| (b'0'..=b'9').contains(&b));
+                let first_token_is_numeric = first_token.bytes().all(|b| b.is_ascii_digit());
 
                 let mut folded = None;
 
